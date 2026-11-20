@@ -3,7 +3,11 @@ __pycache__/
 .pytest_cache/
 data/
 coach_gt/
-submissions/
 out/
+r1/
 *.zip
 .env
+
+# Required annotation archives in the submission bundle.
+!submissions/nguyengiahuy-front.zip
+!submissions/nguyengiahuy-fisheye.zip
