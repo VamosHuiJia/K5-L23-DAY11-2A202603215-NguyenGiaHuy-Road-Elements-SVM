@@ -32,28 +32,28 @@ Hiện cả bốn job front, fisheye, front-extra và fisheye-extra đều ở t
 | Ảnh | Nhãn | Phân vân giữa | Đã chọn | Lý do |
 | --- | --- | --- | --- | --- |
 | A13 | lane, weather | Vạch mờ do mưa hay kéo dài theo phỏng đoán | weather=rain; vẽ theo phần sơn còn nhận biết được | Giọt nước và phản chiếu làm vạch khó nhìn. Em tránh lấy các vệt này làm tâm làn. |
-| A14 | lane R1 | Vạch phía phải bị che hay không có vạch rõ | Chưa thêm R1, giữ cảnh báo QC1-02 | Em không xác định rõ vạch bên phải taxi nên không tự vẽ thêm; chờ coach xác nhận. |
+| A14 | lane R1 | Vạch phía phải bị che hay không có vạch rõ | Không thêm R1 | Không có vạch sơn R1 nhìn thấy ở phía phải taxi; em không vẽ theo phỏng đoán. |
 | A15 | lane, traffic_sign | Vạch nhạt với vết vá; biển chính với biển phụ | Polyline theo tâm sơn; biển phụ có box riêng | Em chọn weather=overcast và phân biệt biển công trường với biển phụ đi kèm. |
 | A16 | lane R1, drivable | Vạch bị xe che; có nên khoét vùng lái quanh xe | R1 bật occluded; drivable không khoét quanh xe | Em nối qua đoạn che ngắn và giữ vùng lái theo mặt đường có thể đi được khi không có xe. |
 | B09 | lane, traffic_light | Vạch qua đường/ray với vạch làn; màu đèn không rõ | Không có lane; một traffic_light với color=unknown | Em chưa xác định được màu đèn nên không đoán màu. Các dải qua đường và ray không được gán thành lane. |
 | B10 | crosswalk | Gán từng dải gạch trắng hay cả vùng qua đường | Một polygon cho cả vùng crosswalk | Em đi viền theo cung cong trên ảnh và dừng ở mép thân xe. |
 | B11 | lane | Vạch ô đỗ, vùng kẻ chéo hay vạch làn | Không vẽ lane; giữ đủ bốn tag | Đây là vạch ô đỗ người khuyết tật và vùng kẻ chéo, thuộc phần không gán lane theo guideline. Cần coach xác nhận cách tính ảnh thêm này. |
 | B12 | drivable, crosswalk | Mặt đường với thân xe; ranh giới dải xe đạp | drivable có area_type=direct; crosswalk là polygon riêng | Em cắt vùng lái theo mép thân xe. Ranh với dải xe đạp chưa rõ nên phần direct cần coach xem lại. |
-| A05 | lane, QC1-02 | Không thấy vạch sơn hay tự vẽ ranh làn | Không thêm L1/R1 | Hai bên có xe đỗ và lề đường, em không thấy vạch sơn rõ. Cảnh báo vẫn được giữ để coach xác nhận ngoại lệ. |
-| A06 | lane, QC1-02 | Vạch R1 với mép lề phía phải | Chưa thêm R1 | Em chưa xác định được vạch sơn bên phải nên không lấy mép lề làm lane. Trường hợp này đang chờ coach xác nhận. |
+| A05 | lane, QC1-02 | Không thấy vạch sơn hay tự vẽ ranh làn | Không thêm L1/R1 | Không có vạch sơn nhìn thấy ở bên trái và bên phải để gán L1/R1. Hai bên có xe đỗ và lề đường nên em không tự vẽ ranh làn. |
+| A06 | lane, QC1-02 | Vạch R1 với mép lề phía phải | Không thêm R1 | Không có vạch sơn R1 nhìn thấy ở phía phải. Em không lấy mép lề làm lane. |
 
 ## 4. Phiếu QC 1 nhận được
 Bạn kiểm lô của tôi: Nguyễn Hải Đăng.  Quyết định nhận được: Hold, theo phiếu QC `nguyenhaidang-qc1-for-nguyengiahuy.md`.  
 | Mã lỗi | Số lỗi | Đồng ý? | Đã sửa? |
 | --- | ---: | --- | --- |
-| QC1-03 | 1 | Có | Đã đổi position của lane B06 từ L1 sang other. |
-| QC1-05 | 3 | Có | Đã bỏ polyline trùng ở A04 và nối các đoạn R1 ở A08. |
-| QC1-11 | 6 | Có | Đã bật edge_zone cho các đèn, biển ở vùng rìa trong B02, B03, B04. |
-| QC1-02 | 4 cảnh báo còn lại | Chờ coach xác nhận | Chưa tự vẽ thêm L1/R1 ở A05, R1 ở A06 và A14. |
+| QC1-03 | 0 | Có | Đã sửa 1 lỗi cũ: đổi position của lane B06 từ L1 sang other. |
+| QC1-05 | 0 | Có | Đã sửa 3 lỗi cũ: bỏ polyline trùng ở A04 và nối các đoạn R1 ở A08. |
+| QC1-11 | 0 | Có | Đã sửa 6 lỗi cũ: bật edge_zone cho các đèn, biển ở vùng rìa trong B02, B03, B04. |
+| QC1-02 | 0 | Có, theo nhận xét của anh Đăng | A05 không có vạch sơn L1/R1 nhìn thấy; A06 và A14 không có vạch R1 nhìn thấy. Không vẽ thêm theo phỏng đoán. |
 
-Trong phiếu QC do anh Nguyễn Hải Đăng kiểm bài của em, mẫu kiểm gồm 6 ảnh A04, A08, B02, B03, B04, B06, với 90 shape và 24 tag, tổng cộng 114 nhãn. Phiếu ghi lại 10 lỗi cũ đã sửa: 1 lỗi nặng và 9 lỗi chính. Ba dòng đầu của bảng là các lỗi này; dòng QC1-02 là cảnh báo còn lại của toàn bộ 28 ảnh, không cộng vào 10 lỗi đã sửa.
+Trong phiếu QC do anh Nguyễn Hải Đăng kiểm bài của em, mẫu kiểm gồm 6 ảnh A04, A08, B02, B03, B04, B06, với 90 shape và 24 tag, tổng cộng 114 nhãn. Cột “Số lỗi” ghi số lỗi còn lại sau sửa, hiện là 0. Phiếu vẫn giữ 10 lỗi cũ đã sửa để ghi nhận quá trình chỉnh nhãn: 1 lỗi nặng và 9 lỗi chính.
 
-Kiểm tra lại bằng lint, sáu ảnh mẫu không còn cảnh báo. Toàn lô vẫn còn bốn cảnh báo QC1-02 và câu hỏi về cách tính L/R ở camera sau. Phiếu QC giữ quyết định Hold vì các trường hợp này chưa được coach xác nhận; chưa có kết quả đối chiếu với GT.
+Kiểm tra lại bằng lint, sáu ảnh mẫu không còn cảnh báo. Toàn bộ 28 ảnh vẫn có bốn cảnh báo QC1-02: A05 thiếu L1/R1, A06 và A14 thiếu R1 theo kiểm tra tự động. Anh Đăng không tính các trường hợp này là lỗi bỏ sót vì không có vạch sơn nhìn thấy để gán. Phiếu giữ Hold để chờ coach xác nhận ngoại lệ và quy ước L/R ở camera sau; chưa có kết quả đối chiếu với GT.
 
 ## 5. Kiểm file export
 | File | Mở lại được? | Số shape ảnh 1 (job / file) | Số shape ảnh 2 (job / file) | Tag camera có trong XML? |
